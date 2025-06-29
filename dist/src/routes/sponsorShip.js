@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const validate_jwt_1 = require("../middlewares/validate-jwt");
+const sponsorShipController_1 = require("../controllers/sponsorShipController");
+const router = (0, express_1.Router)();
+router.get('/', sponsorShipController_1.getSponsorRequests);
+router.get('/:id', sponsorShipController_1.getSponsorById);
+router.post('/', [validate_jwt_1.validateJWT], sponsorShipController_1.createSponsorRequest);
+router.put('/:id', [validate_jwt_1.validateJWT], sponsorShipController_1.updateSponsor);
+exports.default = router;

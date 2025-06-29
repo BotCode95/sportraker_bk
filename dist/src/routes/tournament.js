@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const validate_jwt_1 = require("../middlewares/validate-jwt");
+const tournamentController_1 = require("../controllers/tournamentController");
+const router = (0, express_1.Router)();
+router.get('/', tournamentController_1.getTournaments);
+router.get('/:id', tournamentController_1.getTournamentById);
+router.post('/', [validate_jwt_1.validateJWT], tournamentController_1.createTournament);
+router.put('/:id', [validate_jwt_1.validateJWT], tournamentController_1.updateTournament);
+exports.default = router;

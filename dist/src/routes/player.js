@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const validate_jwt_1 = require("../middlewares/validate-jwt");
+const playerController_1 = require("../controllers/playerController");
+const router = (0, express_1.Router)();
+router.get('/', playerController_1.getPlayers);
+router.get('/:id', playerController_1.getPlayerById);
+router.post('/', [validate_jwt_1.validateJWT], playerController_1.createPlayer);
+router.put('/:id', [validate_jwt_1.validateJWT], playerController_1.updatePlayer);
+router.delete('/:id', [validate_jwt_1.validateJWT], playerController_1.deletePlayer);
+exports.default = router;
